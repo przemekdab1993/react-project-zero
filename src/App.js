@@ -1,6 +1,6 @@
 
 import './App.css';
-import ExpenseItem from './components/Expense/ExpenseItem';
+import Expenses from './components/Expense/Expenses';
 
 function App() {
 
@@ -14,21 +14,7 @@ function App() {
         <div className="App">
             <h2>Hellow Word</h2>
             <p>This i s paragraph.</p>
-            <ExpenseItem
-                title={expenses[0].title}
-                date={expenses[0].date}
-                price={expenses[0].price}
-            />
-            <ExpenseItem
-                title={expenses[1].title}
-                date={expenses[1].date}
-                price={expenses[1].price}
-            />
-            <ExpenseItem
-                title={expenses[2].title}
-                date={expenses[2].date}
-                price={expenses[2].price}
-            />
+            <Expenses expenses={expenses} />
         </div>
     );
 }
