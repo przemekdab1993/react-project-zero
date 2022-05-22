@@ -16,7 +16,7 @@
     align-items: flex-end;
     flex-flow: column-reverse;
     justify-content: flex-start;
-    flex: 1;
+    flex: 3;
 }
 
 .expense-item h2 {
@@ -42,7 +42,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-        flex: 1;
+        flex: 3;
     }
 
     .expense-item__description h2 {
