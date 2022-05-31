@@ -8,10 +8,12 @@ import Card from "../UserInterface/Card";
 const ExpenseItem = (props) => {
 
     const [title, setTitle] = useState(props.title);
+    const [price, setPrice] = useState(props.price);
 
     const clickHandler = () => {
       console.log('Andrzej');
       setTitle('Andrzeju!!!');
+      setPrice(price + 1);
     }
 
     return (
@@ -20,7 +22,7 @@ const ExpenseItem = (props) => {
             <div className="expense-item__description">
                 <h2>Title: <span>{ title }</span></h2>
                 <div className="expense-item__price">
-                    <p>Price: <span>${ props.price }</span></p>
+                    <p>Price: <span>${ price }</span></p>
                 </div>
             </div>
             <button onClick={clickHandler}>Chenge Title</button>

@@ -1,6 +1,8 @@
 
 import './App.css';
-import Expenses from './components/Expense/Expenses';
+
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
 
@@ -12,8 +14,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <h2>Hellow Word</h2>
-            <p>This i s paragraph.</p>
+            <NewExpense/>
             <Expenses expenses={expenses} />
         </div>
     );
