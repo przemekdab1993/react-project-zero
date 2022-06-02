@@ -4,15 +4,16 @@ import './ExpenseForm.css'
 
 const ExpenseForm = () => {
 
-    // const [enteredTitle, setEnteredTitle] = useState('');
-    // const [enteredPrice, setEnteredPrice] = useState('');
-    // const [enteredDate, setEnteredDate] = useState('');
+    const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredPrice, setEnteredPrice] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
 
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        enteredPrice: '',
-        enteredDate: ''
-    })
+    // //ALTERNATIVE
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     enteredPrice: '',
+    //     enteredDate: ''
+    // });
 
     const inputChangeHandler = (event) => {
         const name = event.target.name;
@@ -22,49 +23,94 @@ const ExpenseForm = () => {
 
         switch (name) {
             case 'title':
-                //setEnteredTitle(value);
-                setUserInput({
-                    ...userInput,
-                    enteredTitle: value
-                });
+                setEnteredTitle(value);
+                // //ALTERNATIVE
+                // setUserInput((prevState) => {
+                //     return {
+                //         ...prevState,
+                //         enteredTitle: value
+                //     }
+                // });
                 break;
 
             case 'price':
-                //setEnteredPrice(value);
-                setUserInput({
-                    ...userInput,
-                    enteredPrice: value
-                });
+                setEnteredPrice(value);
+                // //ALTERNATIVE
+                // setUserInput((prevState) => {
+                //     return {
+                //         ...prevState,
+                //         enteredPrice: value
+                //     }
+                // });
                 break;
 
             case 'date':
-                //setEnteredDate(value);
-                setUserInput({
-                    ...userInput,
-                    enteredDate: value
-                });
+                setEnteredDate(value);
+                // ALTERNATIVE
+                // setUserInput((prevState) => {
+                //     return {
+                //         ...prevState,
+                //         enteredDate: value
+                //     }
+                // });
                 break;
 
             default:
                 break;
         }
-        //console.log(userInput);
+    }
+    
+    const submitHandler = (event) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            price: enteredPrice,
+            date: new Date(enteredDate)
+        }
+
+        console.log(expenseData);
+
+
+        setEnteredTitle('');
+        setEnteredPrice('');
+        setEnteredDate('');
+      
     }
 
 
     return (
-        <form className="new-expense-form">
+        <form onSubmit={submitHandler} className="new-expense-form">
             <div className="form-group new-expense-form-group">
                 <label className="new-expense-label" htmlFor="label-title">Title</label>
-                <input type="text" name="title" onChange={inputChangeHandler}/>
+                <input
+                    type="text"
+                    name="title"
+                    value={enteredTitle}
+                    onChange={inputChangeHandler}
+                />
             </div>
             <div className="form-group new-expense-form-group">
                 <label className="new-expense-label" htmlFor="label-price">Price</label>
-                <input type="number" min="0.01" step="0.01" name="price" onChange={inputChangeHandler} />
+                <input
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    name="price"
+                    value={enteredPrice}
+                    onChange={inputChangeHandler}
+                />
             </div>
             <div className="form-group new-expense-form-group">
                 <label className="new-expense-label" htmlFor="label-date">Date</label>
-                <input type="date" min="2019-01-01" max="2022-12-31" name="date" onChange={inputChangeHandler} />
+                <input
+                    type="date"
+                    min="2019-01-01"
+                    max="2022-12-31"
+                    name="date"
+                    value={enteredDate}
+                    onChange={inputChangeHandler}
+                />
             </div>
 
             <button type="submit" >Add Expense</button>
