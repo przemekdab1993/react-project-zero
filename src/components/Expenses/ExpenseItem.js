@@ -10,11 +10,6 @@ const ExpenseItem = (props) => {
     const [title, setTitle] = useState(props.title);
     const [price, setPrice] = useState(props.price);
 
-    const clickHandler = () => {
-      console.log('Andrzej');
-      setTitle('Andrzeju!!!');
-      setPrice(price + 1);
-    }
 
     return (
         <Card className="expense-item">
@@ -25,7 +20,6 @@ const ExpenseItem = (props) => {
                     <p>Price: <span>${ price }</span></p>
                 </div>
             </div>
-            <button onClick={clickHandler}>Chenge Title</button>
         </Card>
     );
 }

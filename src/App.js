@@ -1,5 +1,6 @@
 
 import './App.css';
+import React, {useState} from "react";
 
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from "./components/NewExpense/NewExpense";
@@ -12,9 +13,18 @@ const App = () => {
         {title: 'Shoes', date: new Date(2021,4,12), price: 30.22},
     ];
 
+
+    const addExpenseHandler = (expense) => {
+        const newExpense = {
+            ...expense
+        };
+
+        console.log(newExpense);
+    }
+
     return (
         <div className="App">
-            <NewExpense/>
+            <NewExpense onAddExpense={addExpenseHandler}/>
             <Expenses expenses={expenses} />
         </div>
     );

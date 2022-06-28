@@ -3,10 +3,20 @@ import './NewExpense.css';
 import ExpenseForm from "./ExpenseForm";
 import Card from "../UserInterface/Card";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
+
+    const saveExpenseDateHandler = (enteredExpenseData) => {
+        const expenseData = {
+            ...enteredExpenseData,
+            id: Math.random().toString()
+        }
+
+        props.onAddExpenseDate(expenseData);
+    }
+
     return (
         <Card className="new-expense form-container">
-            <ExpenseForm/>
+            <ExpenseForm onSeveExpenseData={saveExpenseDateHandler} />
         </Card>
     );
 }

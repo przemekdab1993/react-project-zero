@@ -1,0 +1,16 @@
+form {
+    display: flex;
+    justify-content: space-between;
+}
+.filter-label {
+    color: #fff;
+    font-size: 20px;
+    padding-left: 20px;
+}
+select {
+    color: #333;
+    border-radius: 0px;
+    border: 1px solid #fff;
+    box-shadow: 2px 2px 4px #333;
+    padding: 6px 15px;
+}
