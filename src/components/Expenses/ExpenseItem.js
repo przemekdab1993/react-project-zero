@@ -7,17 +7,13 @@ import Card from "../UserInterface/Card";
 
 const ExpenseItem = (props) => {
 
-    const [title, setTitle] = useState(props.title);
-    const [price, setPrice] = useState(props.price);
-
-
     return (
         <Card className="expense-item">
             <ExpenseDate date={ props.date } />
             <div className="expense-item__description">
-                <h2>Title: <span>{ title }</span></h2>
+                <h2>Title: <span>{ props.title }</span></h2>
                 <div className="expense-item__price">
-                    <p>Price: <span>${ price }</span></p>
+                    <p>Price: <span>${ props.price }</span></p>
                 </div>
             </div>
         </Card>

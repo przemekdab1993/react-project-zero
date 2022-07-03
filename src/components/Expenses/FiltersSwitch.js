@@ -20,7 +20,7 @@ const FiltersSwitch = (props) => {
         <div>
             <form onChange={switchHandler}>
                 <label className="filter-label" htmlFor="switch">Filter by year: </label>
-                <select defaultValue="all" id="year" name="year">
+                <select defaultValue={props.selected} id="year" name="year">
                     <option value="all">all</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>

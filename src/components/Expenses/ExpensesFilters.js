@@ -14,12 +14,12 @@ const ExpensesFilters = (props) => {
             ...select,
         }
 
-        props.onSetSelectYear(selectData);
+        props.onChangeFilter(selectData);
     }
 
     return (
         <Card className="filters-container">
-            <FiltersSwitch onSelectYear={getSelectYearFilter}/>
+            <FiltersSwitch selected={props.selected} onSelectYear={getSelectYearFilter}/>
             <FiltersDiagram/>
         </Card>
     );
