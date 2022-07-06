@@ -19,16 +19,29 @@ const Expenses = (props) => {
         console.log(selectData.year);
     }
 
+    const expensesFilter = (expense) => {
+        if (filteredYear === 'all') {
+            return true;
+        }
+        const yearExpense = expense.date.getFullYear().toString();
+
+        return yearExpense === filteredYear;
+    }
+
+    const selectFilteredExpenses = props.expenses.filter(expensesFilter);
+
     return (
         <Card className="expenses-list">
             <ExpensesFilters
                 onChangeFilter={selectFilter}
                 selected={filteredYear}
             />
+            { (selectFilteredExpenses.length <= 0) ? (<div>Brak wpisów w wybranym filtrze.</div>) : false }
 
-            { props.expenses.map( (expense) => {
+            { selectFilteredExpenses.map((expense) => {
                 return (
                     <ExpenseItem
+                        key={expense.id}
                         title={expense.title}
                         date={expense.date}
                         price={expense.price}
