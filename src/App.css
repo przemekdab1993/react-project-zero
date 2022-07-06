@@ -43,3 +43,7 @@ body {
     transform: rotate(360deg);
   }
 }
+.info-message {
+    padding: 20px;
+    color: #fff;
+}

@@ -36,7 +36,7 @@ const Expenses = (props) => {
                 onChangeFilter={selectFilter}
                 selected={filteredYear}
             />
-            { (selectFilteredExpenses.length <= 0) ? (<div>Brak wpisów w wybranym filtrze.</div>) : false }
+            { (selectFilteredExpenses.length <= 0) ? (<div className="info-message">No expenses in selected filters.</div>) : false }
 
             { selectFilteredExpenses.map((expense) => {
                 return (
