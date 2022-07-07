@@ -16,7 +16,7 @@ form.new-expense-form {
     border-radius: 0px;
     border: 1px solid #fff;
     box-shadow: 2px 2px 4px #333;
-    min-width: 180px;
+    min-width: 160px;
 }
 .new-expense-form button {
     margin: 0 15px;

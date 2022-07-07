@@ -63,19 +63,29 @@ const ExpenseForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        const expenseData = {
-            title: enteredTitle,
-            price: enteredPrice,
-            date: new Date(enteredDate)
+        if (enteredPrice !== '' && enteredTitle !== '' && enteredDate !== '') {
+
+            const expenseData = {
+                title: enteredTitle,
+                price: enteredPrice,
+                date: new Date(enteredDate)
+            }
+
+            props.onSeveExpenseData(expenseData);
+
+            setEnteredTitle('');
+            setEnteredPrice('');
+            setEnteredDate('');
         }
+    }
 
-        props.onSeveExpenseData(expenseData);
-
+    const cancelHandler = () => {
 
         setEnteredTitle('');
         setEnteredPrice('');
         setEnteredDate('');
-      
+
+        props.onCancelAddNewExpence();
     }
 
 
@@ -88,6 +98,7 @@ const ExpenseForm = (props) => {
                     name="title"
                     value={enteredTitle}
                     onChange={inputChangeHandler}
+                    required={true}
                 />
             </div>
             <div className="form-group new-expense-form-group">
@@ -99,6 +110,7 @@ const ExpenseForm = (props) => {
                     name="price"
                     value={enteredPrice}
                     onChange={inputChangeHandler}
+                    required={true}
                 />
             </div>
             <div className="form-group new-expense-form-group">
@@ -108,12 +120,14 @@ const ExpenseForm = (props) => {
                     min="2019-01-01"
                     max="2022-12-31"
                     name="date"
+                    required={true}
                     value={enteredDate}
                     onChange={inputChangeHandler}
                 />
             </div>
 
             <button type="submit" >Add Expense</button>
+            <button onClick={cancelHandler} type="button" >Cancel</button>
         </form>
     );
 }

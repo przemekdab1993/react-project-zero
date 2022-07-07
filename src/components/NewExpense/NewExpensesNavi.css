@@ -1,0 +1,9 @@
+.new-expense-navi button {
+    margin: 15px;
+    padding: 10px 25px;
+    border: 1px solid #cbcacc;
+    background-color: #40005d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
