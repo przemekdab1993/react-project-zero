@@ -5,6 +5,7 @@ import './Expenses.css';
 import Card from "../UserInterface/Card";
 import ExpensesFilters from "./ExpensesFilters";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = (props) => {
 
@@ -27,14 +28,17 @@ const Expenses = (props) => {
         return yearExpense === filteredYear;
     }
 
+    const expensesFiltered = props.expenses.filter(expensesFilter);
+
     return (
         <Card className="expenses-panel">
             <ExpensesFilters
                 onChangeFilter={selectFilter}
                 selected={filteredYear}
             />
+            <ExpensesChart expenses={expensesFiltered} />
             <ExpensesList
-                itemsList={props.expenses.filter(expensesFilter)}
+                itemsList={expensesFiltered}
             />
         </Card>
     );
