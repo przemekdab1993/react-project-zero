@@ -1,0 +1,14 @@
+ul.expenses-list  {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.expenses-list li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.info-message {
+    padding: 20px;
+    color: #fff;
+}
