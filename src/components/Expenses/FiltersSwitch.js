@@ -4,9 +4,6 @@ import './FiltersSwitch.css';
 
 const FiltersSwitch = (props) => {
 
-    // coś jest nie tak ze stanami, ale to pewnie wyjdzie pozniej jak się to robi poprawnie
-    //const [switchYear, setSwitchYear] = useState('all');
-
     const switchHandler = (event) => {
 
         const selectForm = {
