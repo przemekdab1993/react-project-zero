@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Chart.css';
+import styles from'./Chart.module.css';
 
 import ChartBar from "./ChartBar";
 import Card from "../UserInterface/Card";
@@ -11,7 +11,7 @@ const Chart = (props) => {
     const totalMaximumValue = Math.max(...dataPointValues);
 
     return (
-        <Card className="chart-container">
+        <Card className={styles['chart-container']} >
             {props.dataPoints.map((dataPoint) => (
                 <ChartBar
                     key={dataPoint.label}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./ExpensesList.css";
+import styles from "./ExpensesList.module.css";
 
 import ExpenseItem from "./ExpenseItem";
 
@@ -9,11 +9,11 @@ const ExpensesList = (props) => {
 
     if (props.itemsList.length <= 0) {
         return (
-            <div className="info-message">No expenses in selected filters.</div>
+            <div className={styles["info-message"]}>No expenses in selected filters.</div>
         )
     }
     return (
-        <ul className="expenses-list">
+        <ul className={styles["expenses-list"]}>
             {props.itemsList.map((expense) => {
                 return (
                     <ExpenseItem

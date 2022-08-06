@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import './ExpenseForm.css'
+import styles from './ExpenseForm.module.css'
 
 const ExpenseForm = (props) => {
 
@@ -129,9 +129,9 @@ const ExpenseForm = (props) => {
 
 
     return (
-        <form onSubmit={submitHandler} className="new-expense-form">
-            <div className={`form-group new-expense-form-group ${!validFormInput.title ? 'invalid' : ''}`} >
-                <label className="new-expense-label" htmlFor="label-title">Title</label>
+        <form onSubmit={submitHandler} className={styles["new-expense-form"]}>
+            <div className={`${styles["new-expense-form-group"]} ${!validFormInput.title ? styles["invalid"] : ''}`} >
+                <label className={styles["new-expense-label"]} htmlFor="label-title">Title</label>
                 <input
                     type="text"
                     name="title"
@@ -142,8 +142,8 @@ const ExpenseForm = (props) => {
 
                 />
             </div>
-            <div className={`form-group new-expense-form-group ${!validFormInput.price ? 'invalid' : ''}`} >
-                <label className="new-expense-label" htmlFor="label-price">Price</label>
+            <div className={`${styles["new-expense-form-group"]} ${!validFormInput.price ? styles["invalid"] : ''}`} >
+                <label className={styles["new-expense-label"]} htmlFor="label-price">Price</label>
                 <input
                     type="number"
                     min="0.01"
@@ -154,8 +154,8 @@ const ExpenseForm = (props) => {
                     onChange={inputChangeHandler}
                 />
             </div>
-            <div className={`form-group new-expense-form-group ${!validFormInput.date ? 'invalid' : ''}`}>
-                <label className="new-expense-label" htmlFor="label-date">Date</label>
+            <div className={`${styles["new-expense-form-group"]} ${!validFormInput.date ? styles["invalid"] : ''}`}>
+                <label className={styles["new-expense-label"]} htmlFor="label-date">Date</label>
                 <input
                     type="date"
                     min="2019-01-01"

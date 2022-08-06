@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./NewExpensesNavi.css";
+import styles from "./NewExpensesNavi.module.css";
 
 const NewExpensesNavi = (props) => {
 
@@ -11,7 +11,7 @@ const NewExpensesNavi = (props) => {
     }
 
     return (
-        <div className="new-expense-navi">
+        <div className={styles["new-expense-navi"]}>
             <button onClick={clickHandler} type="">Add New Expense</button>
         </div>
     );
