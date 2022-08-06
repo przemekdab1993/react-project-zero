@@ -130,7 +130,7 @@ const ExpenseForm = (props) => {
 
     return (
         <form onSubmit={submitHandler} className="new-expense-form">
-            <div className={`form-group new-expense-form-group ${!validFormInput.title ? ' invalid' : ''}`} >
+            <div className={`form-group new-expense-form-group ${!validFormInput.title ? 'invalid' : ''}`} >
                 <label className="new-expense-label" htmlFor="label-title">Title</label>
                 <input
                     type="text"
@@ -142,7 +142,7 @@ const ExpenseForm = (props) => {
 
                 />
             </div>
-            <div className={`form-group new-expense-form-group ${!validFormInput.price ? ' invalid' : ''}`} >
+            <div className={`form-group new-expense-form-group ${!validFormInput.price ? 'invalid' : ''}`} >
                 <label className="new-expense-label" htmlFor="label-price">Price</label>
                 <input
                     type="number"
@@ -154,7 +154,7 @@ const ExpenseForm = (props) => {
                     onChange={inputChangeHandler}
                 />
             </div>
-            <div className={`form-group new-expense-form-group ${!validFormInput.date ? ' invalid' : ''}`}>
+            <div className={`form-group new-expense-form-group ${!validFormInput.date ? 'invalid' : ''}`}>
                 <label className="new-expense-label" htmlFor="label-date">Date</label>
                 <input
                     type="date"
