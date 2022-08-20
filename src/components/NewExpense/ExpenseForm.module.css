@@ -27,3 +27,11 @@ form.new-expense-form {
     font-size: 18px;
     font-weight: 600;
 }
+
+/*invalid*/
+.new-expense-form-group.invalid .new-expense-label {
+    color: red;
+}
+.new-expense-form-group.invalid input {
+    background: #ffbcbc;
+}

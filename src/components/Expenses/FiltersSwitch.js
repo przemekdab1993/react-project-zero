@@ -1,11 +1,8 @@
 import React, {useState} from "react";
 
-import './FiltersSwitch.css';
+import styles from  './FiltersSwitch.module.css';
 
 const FiltersSwitch = (props) => {
-
-    // coś jest nie tak ze stanami, ale to pewnie wyjdzie pozniej jak się to robi poprawnie
-    //const [switchYear, setSwitchYear] = useState('all');
 
     const switchHandler = (event) => {
 
@@ -19,7 +16,7 @@ const FiltersSwitch = (props) => {
     return (
         <div>
             <form onChange={switchHandler}>
-                <label className="filter-label" htmlFor="switch">Filter by year: </label>
+                <label className={styles["filter-label"]} htmlFor="switch">Filter by year: </label>
                 <select defaultValue={props.selected} id="year" name="year">
                     <option value="all">all</option>
                     <option value="2022">2022</option>

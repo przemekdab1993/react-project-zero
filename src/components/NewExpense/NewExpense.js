@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import './NewExpense.css';
+import styles from'./NewExpense.module.css';
 
 import ExpenseForm from "./ExpenseForm";
 import Card from "../UserInterface/Card";
@@ -32,7 +32,7 @@ const NewExpense = (props) => {
     const [renderContent, setRenderContent] = useState(renderNav);
 
     return (
-        <Card className="new-expense form-container">
+        <Card className={styles["new-expense"]}>
             {renderContent}
         </Card>
     );

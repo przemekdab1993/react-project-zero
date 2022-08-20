@@ -1,24 +1,24 @@
 import React from "react";
 
-import "./ChartBar.css";
+import styles from "./ChartBar.module.css";
 
 const ChartBar = (props) => {
 
     let barFillHeight = '0%';
 
     if (props.maxValue > 0) {
-        barFillHeight = Math.round((props.value / props.maxValue) * 100)+ '%';
+        barFillHeight = Math.round((props.value / props.maxValue) * 100) + '%';
     }
 
     return (
-        <div className="chart-bar">
-            <div className="chart-bar-inner">
+        <div className={styles['chart-bar']}>
+            <div className={styles['chart-bar-inner']}>
                 <div
-                    className="chart-bar-fill"
-                    style={{height: barFillHeight }}
+                    className={styles['chart-bar-fill']}
+                    style={{height: barFillHeight}}
                 ></div>
             </div>
-            <div className="chart-bar-label">{props.label}</div>
+            <div className={styles['chart-bar-label']}>{props.label}</div>
         </div>
     );
 }

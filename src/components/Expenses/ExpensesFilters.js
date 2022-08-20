@@ -1,6 +1,6 @@
 import React from "react";
 
-import './ExpensesFilters.css'
+import styles from  './ExpensesFilters.module.css'
 
 import Card from "../UserInterface/Card";
 
@@ -17,7 +17,7 @@ const ExpensesFilters = (props) => {
     }
 
     return (
-        <Card className="filters-container">
+        <Card className={styles["filters-container"]}>
             <FiltersSwitch selected={props.selected} onSelectYear={getSelectYearFilter}/>
         </Card>
     );
