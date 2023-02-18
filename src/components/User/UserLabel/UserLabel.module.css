@@ -1,0 +1,53 @@
+.user-label {
+    margin: 0px auto 15px;
+    background-color: #4b4b4b;
+    padding: 20px 20px 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.user-label-content {
+    display: flex;
+    justify-content: flex-end;
+}
+.user-data {
+    display: flex;
+    align-items: center;
+}
+.user-data .user-data-item {
+    margin-right: 20px;
+    color: #fff;
+    text-transform: capitalize;
+}
+.user-data .user-avatar {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+.user-data .user-first-name {
+
+}
+.user-data .user-second-name {
+
+}
+
+.btn-login {
+    margin: 0 15px;
+    padding: 10px 25px;
+    border: 1px solid #cbcacc;
+    background-color: #4b4b4b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+.btn-logout {
+    margin: 0 15px;
+    padding: 10px 25px;
+    border: 1px solid #cbcacc;
+    background-color: #4b4b4b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
