@@ -10,6 +10,9 @@
     color: #fff;
     display: inline-block;
 }
+.login-form-group .login-form-label.invalid {
+    color: #ff2b2b;
+}
 .login-form input {
     padding: 15px;
     color: #333;
@@ -17,6 +20,12 @@
     border: 1px solid #fff;
     box-shadow: 2px 2px 4px #333;
     min-width: 320px;
+}
+.login-form input.invalid {
+    color: #333;
+    border-radius: 0px;
+    border-color: #ff2b2b;
+    background: #ffd0d0;
 }
 .login-form button {
     margin: 0 0 0 auto;

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import './App.css';
 
@@ -20,6 +20,17 @@ const App = () => {
     const [userIsLogin, setUserIsLogin] = useState(false);
     const [userData, setUserData] = useState({firstName: '', secondName: '', avatar: ''});
 
+    useEffect(() => {
+        const localStorageIsLoginInformation = localStorage.getItem('userIsLogin');
+        const localStorageUserData = localStorage.getItem('userData');
+
+        if (localStorageIsLoginInformation === '1') {
+            setUserIsLogin(prevState => true);
+            setUserData(prevState => JSON.parse(localStorageUserData));
+
+        }
+    }, []);
+
     const addExpenseHandler = (expense) => {
         const newExpense = {
             ...expense
@@ -33,11 +44,17 @@ const App = () => {
     const userDataHandler = (userData) => {
         setUserData(prevState => userData);
         setUserIsLogin(true);
+
+        localStorage.setItem('userIsLogin', '1');
+        localStorage.setItem('userData', JSON.stringify(userData));
     }
 
     const LogoutHandler = () => {
         setUserData(prevState => {return ({firstName: '', secondName: '', avatar: ''})});
         setUserIsLogin(false);
+
+        localStorage.setItem('userIsLogin', '0');
+        localStorage.removeItem('userData');
     }
 
     return (

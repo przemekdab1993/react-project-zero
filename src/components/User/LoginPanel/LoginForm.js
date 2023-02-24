@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import styles from "./LoginForm.module.css";
 
@@ -12,23 +12,50 @@ const LoginForm = (props) => {
 
     const [enteredUserEmail, setEnteredUserEmail] = useState('');
     const [enteredUserPassword, setEnteredUserPassword] = useState('');
-    const [isValid, setIsValid] = useState(false);
+    const [emailIsValid, setEmailIsValid] = useState(true);
+    const [passwordIsValid, setPasswordIsValid] = useState(true);
+    const [formIsValid, setFormIsValid] = useState(false);
+
+    useEffect(() => {
+        setFormIsValid(enteredUserEmail.includes('@') && enteredUserEmail.length >= 6 && enteredUserPassword.length >= 6);
+    },[enteredUserEmail, enteredUserPassword]);
 
     const inputChangeHandler = (event) => {
         const inputName = event.target.name;
 
         if (inputName === 'userEmail') {
-            setEnteredUserEmail(prevState => event.target.value)
+            setEnteredUserEmail(prevState => event.target.value);
+            setEmailIsValid(prevState => true);
         }
         if (inputName === 'userPassword') {
             setEnteredUserPassword(prevState => event.target.value);
+            setPasswordIsValid(prevState => true);
+        }
+    }
+
+    const inputBlurHandler = (event) => {
+        const inputName = event.target.name;
+
+        if (inputName === 'userEmail') {
+            if (!enteredUserEmail.includes('@') || enteredUserEmail.length < 6 ) {
+                setEmailIsValid(prevState => false);
+            } else {
+                setEmailIsValid(prev => true);
+            }
+        }
+        if (inputName === 'userPassword') {
+            if (enteredUserPassword.length < 6 ) {
+                setPasswordIsValid(prevState => false);
+            } else {
+                setPasswordIsValid(prevState => true);
+            }
         }
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
 
-        if (enteredUserPassword.length >= 6 && enteredUserEmail.length > 0) {
+        if (formIsValid) {
             return props.onUserLogin(USERDEFAULTDATA);
         }
     }
@@ -36,24 +63,28 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={submitHandler} className={styles["login-form"]}>
             <div className={`${styles["login-form-group"]}`} >
-                <label className={styles["login-form-label"]} htmlFor="userEmail">E-mail:</label>
+                <label className={`${styles["login-form-label"]} ${!emailIsValid ? styles["invalid"] : ''}`} htmlFor="userEmail">E-mail:</label>
                 <input
+                    className={`${!emailIsValid ? styles["invalid"] : ''}`}
                     type="text"
                     name="userEmail"
                     value={enteredUserEmail}
                     onChange={inputChangeHandler}
+                    onBlur={inputBlurHandler}
                 />
             </div>
             <div className={`${styles["login-form-group"]}`} >
-                <label className={styles["login-form-label"]} htmlFor="userPassword">Password:</label>
+                <label className={`${styles["login-form-label"]} ${!passwordIsValid ? styles["invalid"] : ''}`} htmlFor="userPassword">Password:</label>
                 <input
+                    className={`${!passwordIsValid ? styles["invalid"] : ''}`}
                     type="password"
                     name="userPassword"
                     value={enteredUserPassword}
                     onChange={inputChangeHandler}
+                    onBlur={inputBlurHandler}
                 />
             </div>
-            <button className={`${(!enteredUserEmail || enteredUserPassword.length < 6) ? styles["unactive"]: ''}`} type="submit" >Log in</button>
+            <button className={`${(!formIsValid) ? styles["unactive"]: ''}`} type="submit" >Log in</button>
         </form>
     );
 }
