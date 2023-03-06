@@ -1,6 +1,7 @@
-import React, {useReducer, useEffect, useState} from "react";
+import React, {useReducer, useEffect, useState, useContext} from "react";
 
 import styles from "./LoginForm.module.css";
+import AuthContext from "../../../store/auth-context";
 
 const USERDEFAULTDATA = {
     firstName: 'Jacek',
@@ -38,6 +39,8 @@ const LoginForm = (props) => {
 
     const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: undefined});
     const [passwordState, dispatchPassword] = useReducer(passwordReducer, {value: '', isValid: undefined});
+
+    const authCtx = useContext(AuthContext);
 
     const {value: emailValue} = emailState;
     const {value: passwordValue} = passwordState;
@@ -94,7 +97,7 @@ const LoginForm = (props) => {
         event.preventDefault();
 
         if (formIsValid) {
-            return props.onUserLogin(USERDEFAULTDATA);
+            return authCtx.onLogin(USERDEFAULTDATA);
         }
     }
 

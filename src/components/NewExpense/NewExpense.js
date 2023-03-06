@@ -1,12 +1,15 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 
 import styles from'./NewExpense.module.css';
 
 import ExpenseForm from "./ExpenseForm";
 import Card from "../UserInterface/Card";
 import NewExpensesNavi from "./NewExpensesNavi";
+import ExpensesContext from "../../store/expenses-context";
 
-const NewExpense = (props) => {
+const NewExpense = () => {
+
+    const expensesCtx = useContext(ExpensesContext);
 
     const saveExpenseDateHandler = (enteredExpenseData) => {
         const expenseData = {
@@ -14,7 +17,7 @@ const NewExpense = (props) => {
             id: Math.random().toString()
         }
 
-        props.onAddExpenseDate(expenseData);
+        expensesCtx.onAddExpenses(expenseData);
         hideExpenseForm();
     }
 
