@@ -6,6 +6,7 @@ import Expenses from './components/Expenses/Expenses';
 import NewExpense from "./components/NewExpense/NewExpense";
 import UserLabel from "./components/User/UserLabel/UserLabel";
 import LoginPanel from "./components/User/LoginPanel/LoginPanel";
+import AuthContext from "./store/auth-context";
 
 const DUMMY_EXPENSES = [
     {id: 'e1', title: 'Sunglasses', date: new Date(2021,2,27), price: 20.32},
@@ -49,7 +50,7 @@ const App = () => {
         localStorage.setItem('userData', JSON.stringify(userData));
     }
 
-    const LogoutHandler = () => {
+    const logoutHandler = () => {
         setUserData(prevState => {return ({firstName: '', secondName: '', avatar: ''})});
         setUserIsLogin(false);
 
@@ -58,27 +59,29 @@ const App = () => {
     }
 
     return (
-        <div className="App">
-            <UserLabel
-                userFirstName={userData.firstName}
-                userSecondName={userData.secondName}
-                userAvatar={userData.avatar}
-                isLogin={userIsLogin}
-                onLogout={LogoutHandler}
-            ></UserLabel>
-            {(userIsLogin) ? (
-                <React.Fragment>
-                    <NewExpense onAddExpenseDate={addExpenseHandler} />
-                    <Expenses expenses={expensesList} />
-                </React.Fragment>
-            ) : (
-                <React.Fragment>
-                    <LoginPanel
-                        onUserDataLogin={userDataHandler}
-                    ></LoginPanel>
-                </React.Fragment>
-            )}
-        </div>
+        <AuthContext.Provider
+            value={{
+                isLoggedIn: userIsLogin,
+                userData: userData,
+                onLogout: logoutHandler
+            }}
+        >
+            <div className="App">
+                <UserLabel />
+                {(userIsLogin) ? (
+                    <React.Fragment>
+                        <NewExpense onAddExpenseDate={addExpenseHandler} />
+                        <Expenses expenses={expensesList} />
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <LoginPanel
+                            onUserDataLogin={userDataHandler}
+                        ></LoginPanel>
+                    </React.Fragment>
+                )}
+            </div>
+        </AuthContext.Provider>
     );
 }
 

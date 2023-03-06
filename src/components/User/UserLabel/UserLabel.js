@@ -1,29 +1,50 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import styles from "./UserLabel.module.css";
 import Card from "../../UserInterface/Card";
+import AuthContext from "../../../store/auth-context";
 
-const UserLabel = (props) => {
+const UserLabel = () => {
+    const ctx = useContext(AuthContext);
+
     return (
         <Card className={styles['user-label']} >
             <div className={styles['user-label-content']}>
-                <div className={styles['user-data']}>
-                    <div
-                        className={`${styles['user-data-item']} ${styles['user-avatar']}`}
-                        style={{backgroundColor: props.userAvatar}}
-                    >
+                <nav className={styles['nav-menu']} >
+                    <ul className={styles['nav-list']}>
+                        {ctx.isLoggedIn && (
+                            <li className={styles['nav-item']}>
+                                <a href="/">Users</a>
+                            </li>
+                        )}
+                        {ctx.isLoggedIn && (
+                            <li className={styles['nav-item']}>
+                                <a href="/">Admin</a>
+                            </li>
+                        )}
+                        <li className={styles['nav-item']}>
+                            <a href="/">Help</a>
+                        </li>
+                    </ul>
+                </nav>
+                {(ctx.isLoggedIn) ? (
+                    <div className={styles['user-data']}>
+                        <div
+                            className={`${styles['user-data-item']} ${styles['user-avatar']}`}
+                            style={{backgroundColor: ctx.userData.avatar}}
+                        >
+                        </div>
+                        <div className={`${styles['user-data-item']} ${styles['user-first-name']}`}>
+                            {(ctx.userData.firstName) ? ctx.userData.firstName : 'user'}
+                        </div>
+                        <div className={`${styles['user-data-item']} ${styles['user-second-name']}`}>
+                            {(ctx.userData.secondName) ? ctx.userData.secondName : 'unknown'}
+                        </div>
+                        <button onClick={ctx.onLogout} className={styles['btn-logout']}>Log out</button>
+
                     </div>
-                    <div className={`${styles['user-data-item']} ${styles['user-first-name']}`}>
-                        {(props.userFirstName) ? props.userFirstName : 'user'}
-                    </div>
-                    <div className={`${styles['user-data-item']} ${styles['user-second-name']}`}>
-                        {(props.userSecondName) ? props.userSecondName : 'unknown'}
-                    </div>
-                </div>
-                {(!props.isLogin) ? (
-                    <button className={styles['btn-login']}>Log in</button>
                 ) : (
-                    <button onClick={props.onLogout} className={styles['btn-logout']}>Log out</button>
+                    <button className={styles['btn-login']}>Log in</button>
                 )}
 
             </div>

@@ -7,7 +7,7 @@
 }
 .user-label-content {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 .user-data {
     display: flex;
@@ -50,4 +50,27 @@
     color: #fff;
     font-size: 18px;
     font-weight: 600;
+}
+
+.nav-menu {
+
+}
+
+.nav-menu .nav-list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.nav-menu .nav-list .nav-item {
+    border-right: 2px solid #fff;
+}
+.nav-menu .nav-list .nav-item:last-of-type {
+    border-right: none;
+}
+.nav-menu .nav-list .nav-item a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
 }
