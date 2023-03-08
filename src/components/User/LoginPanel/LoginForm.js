@@ -2,6 +2,7 @@ import React, {useReducer, useEffect, useState, useContext} from "react";
 
 import styles from "./LoginForm.module.css";
 import AuthContext from "../../../store/auth-context";
+import LoginInput from "./LoginInput";
 
 const USERDEFAULTDATA = {
     firstName: 'Jacek',
@@ -103,28 +104,22 @@ const LoginForm = (props) => {
 
     return (
         <form onSubmit={submitHandler} className={styles["login-form"]}>
-            <div className={`${styles["login-form-group"]}`} >
-                <label className={`${styles["login-form-label"]} ${(emailState.isValid === false) ? styles["invalid"] : ''}`} htmlFor="userEmail">E-mail:</label>
-                <input
-                    className={`${(emailState.isValid === false) ? styles["invalid"] : ''}`}
-                    type="text"
-                    name="userEmail"
-                    value={emailState.value}
-                    onChange={inputChangeHandler}
-                    onBlur={inputBlurHandler}
-                />
-            </div>
-            <div className={`${styles["login-form-group"]}`} >
-                <label className={`${styles["login-form-label"]} ${(passwordState.isValid === false) ? styles["invalid"] : ''}`} htmlFor="userPassword">Password:</label>
-                <input
-                    className={`${(passwordState.isValid === false) ? styles["invalid"] : ''}`}
-                    type="password"
-                    name="userPassword"
-                    value={passwordState.value}
-                    onChange={inputChangeHandler}
-                    onBlur={inputBlurHandler}
-                />
-            </div>
+            <LoginInput
+                type='email'
+                name='userEmail'
+                title="Email:"
+                value={emailState.value}
+                onChange={inputChangeHandler}
+                onBlur={inputBlurHandler}
+            />
+            <LoginInput
+                type='password'
+                name='userPassword'
+                title="Password:"
+                value={passwordState.value}
+                onChange={inputChangeHandler}
+                onBlur={inputBlurHandler}
+            />
             <button className={`${(!formIsValid) ? styles["unactive"]: ''}`} type="submit" >Log in</button>
         </form>
     );

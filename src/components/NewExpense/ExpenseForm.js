@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import styles from './ExpenseForm.module.css'
+import ExpenseInputForm from "./ExpenseInputForm";
 
 const ExpenseForm = (props) => {
 
@@ -130,42 +131,31 @@ const ExpenseForm = (props) => {
 
     return (
         <form onSubmit={submitHandler} className={styles["new-expense-form"]}>
-            <div className={`${styles["new-expense-form-group"]} ${!validFormInput.title ? styles["invalid"] : ''}`} >
-                <label className={styles["new-expense-label"]} htmlFor="label-title">Title</label>
-                <input
-                    type="text"
-                    name="title"
-                    value={enteredTitle}
-                    // required={true}
-                    onChange={inputChangeHandler}
 
-
-                />
-            </div>
-            <div className={`${styles["new-expense-form-group"]} ${!validFormInput.price ? styles["invalid"] : ''}`} >
-                <label className={styles["new-expense-label"]} htmlFor="label-price">Price</label>
-                <input
-                    type="number"
-                    min="0.01"
-                    step="0.01"
-                    name="price"
-                    value={enteredPrice}
-                    // required={true}
-                    onChange={inputChangeHandler}
-                />
-            </div>
-            <div className={`${styles["new-expense-form-group"]} ${!validFormInput.date ? styles["invalid"] : ''}`}>
-                <label className={styles["new-expense-label"]} htmlFor="label-date">Date</label>
-                <input
-                    type="date"
-                    min="2019-01-01"
-                    max="2022-12-31"
-                    name="date"
-                    // required={true}
-                    value={enteredDate}
-                    onChange={inputChangeHandler}
-                />
-            </div>
+            <ExpenseInputForm
+                type="text"
+                name="title"
+                title="Title:"
+                value={enteredTitle}
+                onChange={inputChangeHandler}
+                onBlur={() => {}}
+            />
+            <ExpenseInputForm
+                type="number"
+                name="price"
+                title="Price:"
+                value={enteredPrice}
+                onChange={inputChangeHandler}
+                onBlur={() => {}}
+            />
+            <ExpenseInputForm
+                type="date"
+                name="date"
+                title="Date:"
+                value={enteredDate}
+                onChange={inputChangeHandler}
+                onBlur={() => {}}
+            />
 
             <button type="submit" >Add Expense</button>
             <button onClick={cancelHandler} type="button" >Cancel</button>
