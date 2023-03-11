@@ -14,6 +14,10 @@
     position: relative;
     right: 0;
     display: block;
+    cursor: pointer;
+}
+.login-form button:hover{
+    background-color: #5c107f;
 }
 .login-form button.unactive {
     background-color: #4b4b4b;

@@ -1,4 +1,4 @@
-import React, {useReducer, useEffect, useState, useContext} from "react";
+import React, {useReducer, useEffect, useState, useContext, useRef} from "react";
 
 import styles from "./LoginForm.module.css";
 import AuthContext from "../../../store/auth-context";
@@ -42,6 +42,9 @@ const LoginForm = (props) => {
     const [passwordState, dispatchPassword] = useReducer(passwordReducer, {value: '', isValid: undefined});
 
     const authCtx = useContext(AuthContext);
+
+    const emailInputRef = useRef();
+    const passwordInputRef = useRef();
 
     const {value: emailValue} = emailState;
     const {value: passwordValue} = passwordState;
@@ -99,6 +102,13 @@ const LoginForm = (props) => {
 
         if (formIsValid) {
             return authCtx.onLogin(USERDEFAULTDATA);
+        } else {
+            if (!emailState.isValid) {
+                emailInputRef.current.focus();
+            }
+            else if (!passwordState.isValid) {
+                passwordInputRef.current.focus();
+            }
         }
     }
 
@@ -111,6 +121,7 @@ const LoginForm = (props) => {
                 value={emailState.value}
                 onChange={inputChangeHandler}
                 onBlur={inputBlurHandler}
+                ref={emailInputRef}
             />
             <LoginInput
                 type='password'
@@ -119,8 +130,9 @@ const LoginForm = (props) => {
                 value={passwordState.value}
                 onChange={inputChangeHandler}
                 onBlur={inputBlurHandler}
+                ref={passwordInputRef}
             />
-            <button className={`${(!formIsValid) ? styles["unactive"]: ''}`} type="submit" >Log in</button>
+            <button className={''} type="submit" >Log in</button>
         </form>
     );
 }
