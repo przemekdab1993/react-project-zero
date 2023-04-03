@@ -2,22 +2,6 @@ form.new-expense-form {
     display: inline-flex;
     padding: 15px;
 }
-.new-expense-form-group {
-    margin: 0px 10px;
-}
-
-.new-expense-form-group .new-expense-label {
-    margin-right: 8px;
-    color: #fff;
-}
-.new-expense-form-group input {
-    padding: 15px;
-    color: #333;
-    border-radius: 0px;
-    border: 1px solid #fff;
-    box-shadow: 2px 2px 4px #333;
-    min-width: 160px;
-}
 .new-expense-form button {
     margin: 0 15px;
     padding: 10px 25px;
@@ -26,12 +10,4 @@ form.new-expense-form {
     color: #fff;
     font-size: 18px;
     font-weight: 600;
-}
-
-/*invalid*/
-.new-expense-form-group.invalid .new-expense-label {
-    color: red;
-}
-.new-expense-form-group.invalid input {
-    background: #ffbcbc;
 }

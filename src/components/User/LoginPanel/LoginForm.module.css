@@ -1,0 +1,25 @@
+.login-form {
+    display: block;
+}
+
+.login-form button {
+    margin: 0 0 0 auto;
+    padding: 10px 25px;
+    width: 240px;
+    border: 1px solid #cbcacc;
+    background-color: #40005d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    right: 0;
+    display: block;
+    cursor: pointer;
+}
+.login-form button:hover{
+    background-color: #5c107f;
+}
+.login-form button.unactive {
+    background-color: #4b4b4b;
+}
+
