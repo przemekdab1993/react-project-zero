@@ -8,6 +8,8 @@ import UserLabel from "./components/User/UserLabel/UserLabel";
 import LoginPanel from "./components/User/LoginPanel/LoginPanel";
 import AuthContext from "./store/auth-context";
 import ExpensesContext, {ExpensesContextProvider} from "./store/expenses-context";
+import BackwardCounter from "./components/Counters/BackwardCounter";
+import ForwardCounter from "./components/Counters/ForwardCounter";
 
 
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
                     <LoginPanel />
                 </React.Fragment>
             )}
+            <ForwardCounter />
+            <BackwardCounter />
         </div>
     );
 }
